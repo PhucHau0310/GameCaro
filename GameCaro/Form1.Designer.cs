@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pnlChessBoard = new System.Windows.Forms.Panel();
             this.pnlImageCaro = new System.Windows.Forms.Panel();
@@ -40,8 +41,13 @@
             this.ptcMark = new System.Windows.Forms.PictureBox();
             this.pcbCoolDown = new System.Windows.Forms.ProgressBar();
             this.txtLabelName = new System.Windows.Forms.TextBox();
+            this.chatBox = new System.Windows.Forms.TextBox();
+            this.messBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tmCoolDown = new System.Windows.Forms.Timer(this.components);
             this.pnlImageCaro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pteBoxCaro)).BeginInit();
+            this.pnlChat.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptcMark)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +84,9 @@
             // 
             this.pnlChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChat.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlChat.Controls.Add(this.button1);
+            this.pnlChat.Controls.Add(this.messBox);
+            this.pnlChat.Controls.Add(this.chatBox);
             this.pnlChat.Location = new System.Drawing.Point(879, 232);
             this.pnlChat.Name = "pnlChat";
             this.pnlChat.Size = new System.Drawing.Size(386, 205);
@@ -111,26 +120,27 @@
             // 
             this.btnLan.Location = new System.Drawing.Point(3, 146);
             this.btnLan.Name = "btnLan";
-            this.btnLan.Size = new System.Drawing.Size(181, 40);
+            this.btnLan.Size = new System.Drawing.Size(192, 40);
             this.btnLan.TabIndex = 4;
             this.btnLan.Text = "Connect";
             this.btnLan.UseVisualStyleBackColor = true;
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(6, 101);
-            this.txtIP.Multiline = true;
+            this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIP.Location = new System.Drawing.Point(6, 110);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(181, 38);
+            this.txtIP.Size = new System.Drawing.Size(189, 30);
             this.txtIP.TabIndex = 3;
             this.txtIP.Text = "127.0.0.1";
             // 
             // ptcMark
             // 
-            this.ptcMark.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ptcMark.BackColor = System.Drawing.SystemColors.Control;
             this.ptcMark.Location = new System.Drawing.Point(201, 18);
             this.ptcMark.Name = "ptcMark";
             this.ptcMark.Size = new System.Drawing.Size(172, 167);
+            this.ptcMark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptcMark.TabIndex = 2;
             this.ptcMark.TabStop = false;
             // 
@@ -138,17 +148,48 @@
             // 
             this.pcbCoolDown.Location = new System.Drawing.Point(6, 61);
             this.pcbCoolDown.Name = "pcbCoolDown";
-            this.pcbCoolDown.Size = new System.Drawing.Size(181, 37);
+            this.pcbCoolDown.Size = new System.Drawing.Size(189, 37);
             this.pcbCoolDown.TabIndex = 1;
             // 
             // txtLabelName
             // 
+            this.txtLabelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelName.Location = new System.Drawing.Point(6, 18);
-            this.txtLabelName.Multiline = true;
             this.txtLabelName.Name = "txtLabelName";
             this.txtLabelName.ReadOnly = true;
-            this.txtLabelName.Size = new System.Drawing.Size(181, 37);
+            this.txtLabelName.Size = new System.Drawing.Size(189, 30);
             this.txtLabelName.TabIndex = 0;
+            // 
+            // chatBox
+            // 
+            this.chatBox.Location = new System.Drawing.Point(3, 3);
+            this.chatBox.Multiline = true;
+            this.chatBox.Name = "chatBox";
+            this.chatBox.ReadOnly = true;
+            this.chatBox.Size = new System.Drawing.Size(380, 154);
+            this.chatBox.TabIndex = 0;
+            // 
+            // messBox
+            // 
+            this.messBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messBox.Location = new System.Drawing.Point(3, 166);
+            this.messBox.Name = "messBox";
+            this.messBox.Size = new System.Drawing.Size(249, 30);
+            this.messBox.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(258, 163);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // tmCoolDown
+            // 
+            this.tmCoolDown.Tick += new System.EventHandler(this.tmCoolDown_Tick);
             // 
             // Form1
             // 
@@ -164,6 +205,8 @@
             this.Text = "Game Caro";
             this.pnlImageCaro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pteBoxCaro)).EndInit();
+            this.pnlChat.ResumeLayout(false);
+            this.pnlChat.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptcMark)).EndInit();
@@ -184,6 +227,10 @@
         private System.Windows.Forms.PictureBox ptcMark;
         private System.Windows.Forms.ProgressBar pcbCoolDown;
         private System.Windows.Forms.TextBox txtLabelName;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox messBox;
+        private System.Windows.Forms.TextBox chatBox;
+        private System.Windows.Forms.Timer tmCoolDown;
     }
 }
 

@@ -17,9 +17,45 @@ namespace GameCaro
         {
             InitializeComponent();
 
-            ChessBoard = new ChessBoardManager(pnlChessBoard);
+            ChessBoard = new ChessBoardManager(pnlChessBoard, txtLabelName, ptcMark);
+            ChessBoard.EndedGame += ChessBoard_EndedGame;
+            ChessBoard.PlayerMarked += ChessBoard_PlayerMarked;
+
+            pcbCoolDown.Step = Constain.COOL_DOWN_STEP;
+            pcbCoolDown.Maximum = Constain.COOL_DOWN_TIME;
+            pcbCoolDown.Value = 0;
+            
+            tmCoolDown.Interval = Constain.COOL_DOWN_INTERVAL;
+
             ChessBoard.DrawChessBoard();
         }
 
+        void EndGame()
+        {
+            tmCoolDown.Stop();
+            pnlChessBoard.Enabled = false;
+            MessageBox.Show("Ket thuc");
+        }
+
+        private void ChessBoard_PlayerMarked(object sender, EventArgs e)
+        {
+            tmCoolDown.Start();
+            pcbCoolDown.Value = 0;
+        }
+
+        private void ChessBoard_EndedGame(object sender, EventArgs e)
+        {
+            EndGame();
+        }
+
+        private void tmCoolDown_Tick(object sender, EventArgs e)
+        {
+            pcbCoolDown.PerformStep();
+
+            if (pcbCoolDown.Value >= pcbCoolDown.Maximum)
+            {
+                EndGame();
+            }
+        }
     }
 }
