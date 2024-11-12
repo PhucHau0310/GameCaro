@@ -41,10 +41,13 @@
             this.ptcMark = new System.Windows.Forms.PictureBox();
             this.pcbCoolDown = new System.Windows.Forms.ProgressBar();
             this.txtLabelName = new System.Windows.Forms.TextBox();
-            this.chatBox = new System.Windows.Forms.TextBox();
-            this.messBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tmCoolDown = new System.Windows.Forms.Timer(this.components);
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.lstMessage = new System.Windows.Forms.ListBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.pnlImageCaro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pteBoxCaro)).BeginInit();
             this.pnlChat.SuspendLayout();
@@ -55,9 +58,9 @@
             // pnlChessBoard
             // 
             this.pnlChessBoard.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlChessBoard.Location = new System.Drawing.Point(12, 12);
+            this.pnlChessBoard.Location = new System.Drawing.Point(12, 66);
             this.pnlChessBoard.Name = "pnlChessBoard";
-            this.pnlChessBoard.Size = new System.Drawing.Size(858, 676);
+            this.pnlChessBoard.Size = new System.Drawing.Size(858, 622);
             this.pnlChessBoard.TabIndex = 0;
             // 
             // pnlImageCaro
@@ -84,9 +87,12 @@
             // 
             this.pnlChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChat.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlChat.Controls.Add(this.button1);
-            this.pnlChat.Controls.Add(this.messBox);
-            this.pnlChat.Controls.Add(this.chatBox);
+            this.pnlChat.Controls.Add(this.btnSend);
+            this.pnlChat.Controls.Add(this.txtMessage);
+            this.pnlChat.Controls.Add(this.txtUser);
+            this.pnlChat.Controls.Add(this.lstMessage);
+            this.pnlChat.Controls.Add(this.lblMessage);
+            this.pnlChat.Controls.Add(this.lblUser);
             this.pnlChat.Location = new System.Drawing.Point(879, 232);
             this.pnlChat.Name = "pnlChat";
             this.pnlChat.Size = new System.Drawing.Size(386, 205);
@@ -160,36 +166,60 @@
             this.txtLabelName.Size = new System.Drawing.Size(189, 30);
             this.txtLabelName.TabIndex = 0;
             // 
-            // chatBox
-            // 
-            this.chatBox.Location = new System.Drawing.Point(3, 3);
-            this.chatBox.Multiline = true;
-            this.chatBox.Name = "chatBox";
-            this.chatBox.ReadOnly = true;
-            this.chatBox.Size = new System.Drawing.Size(380, 154);
-            this.chatBox.TabIndex = 0;
-            // 
-            // messBox
-            // 
-            this.messBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messBox.Location = new System.Drawing.Point(3, 166);
-            this.messBox.Name = "messBox";
-            this.messBox.Size = new System.Drawing.Size(249, 30);
-            this.messBox.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(258, 163);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // tmCoolDown
             // 
             this.tmCoolDown.Tick += new System.EventHandler(this.tmCoolDown_Tick);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(12, 156);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(42, 16);
+            this.lblUser.TabIndex = 0;
+            this.lblUser.Text = "User :";
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(12, 180);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(70, 16);
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.Text = "Message :";
+            // 
+            // lstMessage
+            // 
+            this.lstMessage.FormattingEnabled = true;
+            this.lstMessage.ItemHeight = 16;
+            this.lstMessage.Location = new System.Drawing.Point(15, 2);
+            this.lstMessage.Name = "lstMessage";
+            this.lstMessage.Size = new System.Drawing.Size(355, 132);
+            this.lstMessage.TabIndex = 2;
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(92, 150);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(210, 22);
+            this.txtUser.TabIndex = 3;
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Location = new System.Drawing.Point(92, 178);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(210, 22);
+            this.txtMessage.TabIndex = 4;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(308, 177);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 5;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // Form1
             // 
@@ -203,6 +233,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Game Caro";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.pnlImageCaro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pteBoxCaro)).EndInit();
             this.pnlChat.ResumeLayout(false);
@@ -227,10 +258,13 @@
         private System.Windows.Forms.PictureBox ptcMark;
         private System.Windows.Forms.ProgressBar pcbCoolDown;
         private System.Windows.Forms.TextBox txtLabelName;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox messBox;
-        private System.Windows.Forms.TextBox chatBox;
         private System.Windows.Forms.Timer tmCoolDown;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.ListBox lstMessage;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label lblUser;
     }
 }
 

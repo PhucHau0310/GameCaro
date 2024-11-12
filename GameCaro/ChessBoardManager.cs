@@ -93,8 +93,8 @@ namespace GameCaro
 
             this.Player = new List<Player>()
             {
-                new Player("NguyenHau", Image.FromFile(Application.StartupPath + "\\Resources\\x_mark.png")),
-                new Player("HieuNhi", Image.FromFile(Application.StartupPath + "\\Resources\\o_mark.png"))
+                //new Player("NguyenHau", Image.FromFile(Application.StartupPath + "\\Resources\\x_mark.png")),
+                //new Player("HieuNhi", Image.FromFile(Application.StartupPath + "\\Resources\\o_mark.png"))
             };
 
             CurrentPlayer = 0;
@@ -330,8 +330,8 @@ namespace GameCaro
         }
         private void ChangePlayer()
         {
-            PlayerName.Text = Player[CurrentPlayer].Name;
-            PlayerMark.Image = Player[CurrentPlayer].Mark;
+            //PlayerName.Text = Player[CurrentPlayer].Name;
+            //PlayerMark.Image = Player[CurrentPlayer].Mark;
         }
     }
 }

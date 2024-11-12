@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace GameCaro
 {
     public partial class Form1 : Form
     {
         ChessBoardManager ChessBoard;
+        HubConnection hubConnection;
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +31,11 @@ namespace GameCaro
             tmCoolDown.Interval = Constain.COOL_DOWN_INTERVAL;
 
             ChessBoard.DrawChessBoard();
+
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl("https://localhost:7157/ChatHub")
+                .Build();
+            hubConnection.Closed += HubConnection_Closed;
         }
 
         void EndGame()
@@ -57,5 +65,48 @@ namespace GameCaro
                 EndGame();
             }
         }
+        private async void Form1_Load_1(object sender, EventArgs e)
+        {
+            hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+            {
+                var newMessage = $"{user}: {message} ";
+                lstMessage.Items.Add(newMessage);
+            });
+            try
+            {
+                await hubConnection.StartAsync();
+                lstMessage.Items.Add("Connection started");
+            }
+            catch (Exception ex)
+            {
+                lstMessage.Items.Add(ex.Message);
+            }
+        }
+        private async Task HubConnection_Closed(Exception arg)
+        {
+            if (arg == null)
+            {
+                arg = new Exception("No specific error provided");
+            }
+
+            lstMessage.Items.Add($"Connection closed due to error: {arg.Message}");
+
+            await Task.Delay(new Random().Next(0, 5) * 1000);
+            await hubConnection.StartAsync();
+        }
+        private async void btnSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await hubConnection.InvokeAsync("SendMessage", txtUser.Text, txtMessage.Text);
+            }
+            catch (Exception ex)
+            {
+                lstMessage.Items.Add(ex.Message);
+            }
+        }
+
     }
 }
+    
+

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCaro", "GameCaro\GameCaro.csproj", "{D6536D7B-E8E9-4774-8D60-25F70DB7C584}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{B3C47126-8A95-4F00-B7D0-0B0F18CE37FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D6536D7B-E8E9-4774-8D60-25F70DB7C584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6536D7B-E8E9-4774-8D60-25F70DB7C584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6536D7B-E8E9-4774-8D60-25F70DB7C584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C47126-8A95-4F00-B7D0-0B0F18CE37FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C47126-8A95-4F00-B7D0-0B0F18CE37FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C47126-8A95-4F00-B7D0-0B0F18CE37FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C47126-8A95-4F00-B7D0-0B0F18CE37FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
