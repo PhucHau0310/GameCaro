@@ -1,4 +1,4 @@
-﻿namespace GameCaro
+namespace GameCaro
 {
     partial class Form1
     {
@@ -31,240 +31,217 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pnlChessBoard = new System.Windows.Forms.Panel();
-            this.pnlImageCaro = new System.Windows.Forms.Panel();
-            this.pteBoxCaro = new System.Windows.Forms.PictureBox();
-            this.pnlChat = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pctbAvatar = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLan = new System.Windows.Forms.Button();
-            this.txtIP = new System.Windows.Forms.TextBox();
-            this.ptcMark = new System.Windows.Forms.PictureBox();
-            this.pcbCoolDown = new System.Windows.Forms.ProgressBar();
-            this.txtLabelName = new System.Windows.Forms.TextBox();
+            this.btnLAN = new System.Windows.Forms.Button();
+            this.txbIP = new System.Windows.Forms.TextBox();
+            this.pctbMark = new System.Windows.Forms.PictureBox();
+            this.prcbCoolDown = new System.Windows.Forms.ProgressBar();
+            this.txbPlayerName = new System.Windows.Forms.TextBox();
             this.tmCoolDown = new System.Windows.Forms.Timer(this.components);
-            this.lblUser = new System.Windows.Forms.Label();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.lstMessage = new System.Windows.Forms.ListBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.txtMessage = new System.Windows.Forms.TextBox();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.pnlImageCaro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pteBoxCaro)).BeginInit();
-            this.pnlChat.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptcMark)).BeginInit();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbAvatar)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbMark)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlChessBoard
             // 
             this.pnlChessBoard.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlChessBoard.Location = new System.Drawing.Point(12, 66);
+            this.pnlChessBoard.Location = new System.Drawing.Point(12, 27);
             this.pnlChessBoard.Name = "pnlChessBoard";
-            this.pnlChessBoard.Size = new System.Drawing.Size(858, 622);
+            this.pnlChessBoard.Size = new System.Drawing.Size(594, 520);
             this.pnlChessBoard.TabIndex = 0;
             // 
-            // pnlImageCaro
+            // panel2
             // 
-            this.pnlImageCaro.Controls.Add(this.pteBoxCaro);
-            this.pnlImageCaro.Location = new System.Drawing.Point(879, 12);
-            this.pnlImageCaro.Name = "pnlImageCaro";
-            this.pnlImageCaro.Size = new System.Drawing.Size(386, 214);
-            this.pnlImageCaro.TabIndex = 1;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.pctbAvatar);
+            this.panel2.Location = new System.Drawing.Point(612, 27);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(269, 269);
+            this.panel2.TabIndex = 1;
             // 
-            // pteBoxCaro
+            // pctbAvatar
             // 
-            this.pteBoxCaro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pteBoxCaro.BackColor = System.Drawing.SystemColors.Control;
-            this.pteBoxCaro.BackgroundImage = global::GameCaro.Properties.Resources.caro;
-            this.pteBoxCaro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pteBoxCaro.Location = new System.Drawing.Point(3, 3);
-            this.pteBoxCaro.Name = "pteBoxCaro";
-            this.pteBoxCaro.Size = new System.Drawing.Size(383, 208);
-            this.pteBoxCaro.TabIndex = 0;
-            this.pteBoxCaro.TabStop = false;
+            this.pctbAvatar.BackColor = System.Drawing.SystemColors.Control;
+            this.pctbAvatar.BackgroundImage = global::GameCaro.Properties.Resources.caro;
+            this.pctbAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctbAvatar.Location = new System.Drawing.Point(3, 3);
+            this.pctbAvatar.Name = "pctbAvatar";
+            this.pctbAvatar.Size = new System.Drawing.Size(263, 263);
+            this.pctbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctbAvatar.TabIndex = 0;
+            this.pctbAvatar.TabStop = false;
             // 
-            // pnlChat
+            // panel3
             // 
-            this.pnlChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlChat.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlChat.Controls.Add(this.btnSend);
-            this.pnlChat.Controls.Add(this.txtMessage);
-            this.pnlChat.Controls.Add(this.txtUser);
-            this.pnlChat.Controls.Add(this.lstMessage);
-            this.pnlChat.Controls.Add(this.lblMessage);
-            this.pnlChat.Controls.Add(this.lblUser);
-            this.pnlChat.Location = new System.Drawing.Point(879, 232);
-            this.pnlChat.Name = "pnlChat";
-            this.pnlChat.Size = new System.Drawing.Size(386, 205);
-            this.pnlChat.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.btnLan);
-            this.panel4.Controls.Add(this.txtIP);
-            this.panel4.Controls.Add(this.ptcMark);
-            this.panel4.Controls.Add(this.pcbCoolDown);
-            this.panel4.Controls.Add(this.txtLabelName);
-            this.panel4.Location = new System.Drawing.Point(876, 443);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(386, 245);
-            this.panel4.TabIndex = 3;
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.btnLAN);
+            this.panel3.Controls.Add(this.txbIP);
+            this.panel3.Controls.Add(this.pctbMark);
+            this.panel3.Controls.Add(this.prcbCoolDown);
+            this.panel3.Controls.Add(this.txbPlayerName);
+            this.panel3.Location = new System.Drawing.Point(612, 302);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(269, 214);
+            this.panel3.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 203);
+            this.label1.Font = new System.Drawing.Font("Elephant", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 42);
+            this.label1.Size = new System.Drawing.Size(254, 35);
             this.label1.TabIndex = 5;
-            this.label1.Text = " 5 in a line for win";
+            this.label1.Text = "5 in a line to win";
             // 
-            // btnLan
+            // btnLAN
             // 
-            this.btnLan.Location = new System.Drawing.Point(3, 146);
-            this.btnLan.Name = "btnLan";
-            this.btnLan.Size = new System.Drawing.Size(192, 40);
-            this.btnLan.TabIndex = 4;
-            this.btnLan.Text = "Connect";
-            this.btnLan.UseVisualStyleBackColor = true;
+            this.btnLAN.Location = new System.Drawing.Point(3, 84);
+            this.btnLAN.Name = "btnLAN";
+            this.btnLAN.Size = new System.Drawing.Size(140, 23);
+            this.btnLAN.TabIndex = 4;
+            this.btnLAN.Text = "LAN";
+            this.btnLAN.UseVisualStyleBackColor = true;
+            this.btnLAN.Click += new System.EventHandler(this.btnLAN_Click);
             // 
-            // txtIP
+            // txbIP
             // 
-            this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIP.Location = new System.Drawing.Point(6, 110);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(189, 30);
-            this.txtIP.TabIndex = 3;
-            this.txtIP.Text = "127.0.0.1";
+            this.txbIP.Location = new System.Drawing.Point(3, 58);
+            this.txbIP.Name = "txbIP";
+            this.txbIP.Size = new System.Drawing.Size(140, 20);
+            this.txbIP.TabIndex = 3;
+            this.txbIP.Text = "127.0.0.1";
             // 
-            // ptcMark
+            // pctbMark
             // 
-            this.ptcMark.BackColor = System.Drawing.SystemColors.Control;
-            this.ptcMark.Location = new System.Drawing.Point(201, 18);
-            this.ptcMark.Name = "ptcMark";
-            this.ptcMark.Size = new System.Drawing.Size(172, 167);
-            this.ptcMark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptcMark.TabIndex = 2;
-            this.ptcMark.TabStop = false;
+            this.pctbMark.BackColor = System.Drawing.SystemColors.Control;
+            this.pctbMark.Location = new System.Drawing.Point(149, 3);
+            this.pctbMark.Name = "pctbMark";
+            this.pctbMark.Size = new System.Drawing.Size(117, 104);
+            this.pctbMark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctbMark.TabIndex = 2;
+            this.pctbMark.TabStop = false;
             // 
-            // pcbCoolDown
+            // prcbCoolDown
             // 
-            this.pcbCoolDown.Location = new System.Drawing.Point(6, 61);
-            this.pcbCoolDown.Name = "pcbCoolDown";
-            this.pcbCoolDown.Size = new System.Drawing.Size(189, 37);
-            this.pcbCoolDown.TabIndex = 1;
+            this.prcbCoolDown.Location = new System.Drawing.Point(3, 29);
+            this.prcbCoolDown.Name = "prcbCoolDown";
+            this.prcbCoolDown.Size = new System.Drawing.Size(140, 23);
+            this.prcbCoolDown.TabIndex = 1;
             // 
-            // txtLabelName
+            // txbPlayerName
             // 
-            this.txtLabelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLabelName.Location = new System.Drawing.Point(6, 18);
-            this.txtLabelName.Name = "txtLabelName";
-            this.txtLabelName.ReadOnly = true;
-            this.txtLabelName.Size = new System.Drawing.Size(189, 30);
-            this.txtLabelName.TabIndex = 0;
+            this.txbPlayerName.Location = new System.Drawing.Point(3, 3);
+            this.txbPlayerName.Name = "txbPlayerName";
+            this.txbPlayerName.ReadOnly = true;
+            this.txbPlayerName.Size = new System.Drawing.Size(140, 20);
+            this.txbPlayerName.TabIndex = 0;
             // 
             // tmCoolDown
             // 
             this.tmCoolDown.Tick += new System.EventHandler(this.tmCoolDown_Tick);
             // 
-            // lblUser
+            // menuStrip1
             // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(12, 156);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(42, 16);
-            this.lblUser.TabIndex = 0;
-            this.lblUser.Text = "User :";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(893, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // lblMessage
+            // menuToolStripMenuItem
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(12, 180);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(70, 16);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Message :";
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newGameToolStripMenuItem,
+            this.undoToolStripMenuItem,
+            this.quitToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // lstMessage
+            // newGameToolStripMenuItem
             // 
-            this.lstMessage.FormattingEnabled = true;
-            this.lstMessage.ItemHeight = 16;
-            this.lstMessage.Location = new System.Drawing.Point(15, 2);
-            this.lstMessage.Name = "lstMessage";
-            this.lstMessage.Size = new System.Drawing.Size(355, 132);
-            this.lstMessage.TabIndex = 2;
+            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
+            this.newGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.newGameToolStripMenuItem.Text = "New game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
-            // txtUser
+            // undoToolStripMenuItem
             // 
-            this.txtUser.Location = new System.Drawing.Point(92, 150);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(210, 22);
-            this.txtUser.TabIndex = 3;
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
-            // txtMessage
+            // quitToolStripMenuItem
             // 
-            this.txtMessage.Location = new System.Drawing.Point(92, 178);
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(210, 22);
-            this.txtMessage.TabIndex = 4;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(308, 177);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 5;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 700);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.pnlChat);
-            this.Controls.Add(this.pnlImageCaro);
+            this.ClientSize = new System.Drawing.Size(893, 557);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlChessBoard);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Game Caro";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
-            this.pnlImageCaro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pteBoxCaro)).EndInit();
-            this.pnlChat.ResumeLayout(false);
-            this.pnlChat.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptcMark)).EndInit();
+            this.Text = "Game Caro LAN";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pctbAvatar)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbMark)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel pnlChessBoard;
-        private System.Windows.Forms.Panel pnlImageCaro;
-        private System.Windows.Forms.Panel pnlChat;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pteBoxCaro;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pctbAvatar;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnLAN;
+        private System.Windows.Forms.TextBox txbIP;
+        private System.Windows.Forms.PictureBox pctbMark;
+        private System.Windows.Forms.ProgressBar prcbCoolDown;
+        private System.Windows.Forms.TextBox txbPlayerName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLan;
-        private System.Windows.Forms.TextBox txtIP;
-        private System.Windows.Forms.PictureBox ptcMark;
-        private System.Windows.Forms.ProgressBar pcbCoolDown;
-        private System.Windows.Forms.TextBox txtLabelName;
         private System.Windows.Forms.Timer tmCoolDown;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox txtMessage;
-        private System.Windows.Forms.TextBox txtUser;
-        private System.Windows.Forms.ListBox lstMessage;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
     }
 }
-
