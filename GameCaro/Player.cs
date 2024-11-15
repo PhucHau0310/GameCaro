@@ -9,8 +9,7 @@ namespace GameCaro
 {
     public class Player
     {
-        private string name;    // Ctrl + R + E
-
+        private string name;
         public string Name
         {
             get { return name; }
@@ -18,7 +17,6 @@ namespace GameCaro
         }
 
         private Image mark;
-
         public Image Mark
         {
             get { return mark; }
@@ -27,8 +25,8 @@ namespace GameCaro
 
         public Player(string name, Image mark)
         {
-            this.Name = name;
-            this.Mark = mark;
+            this.name = name;
+            this.mark = mark;
         }
     }
 }
