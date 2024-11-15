@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +9,8 @@ namespace GameCaro
 {
     public class Player
     {
-        private string name;
+        private string name;    // Ctrl + R + E
+
         public string Name
         {
             get { return name; }
@@ -17,6 +18,7 @@ namespace GameCaro
         }
 
         private Image mark;
+
         public Image Mark
         {
             get { return mark; }
@@ -25,8 +27,8 @@ namespace GameCaro
 
         public Player(string name, Image mark)
         {
-            this.name = name;
-            this.mark = mark;
+            this.Name = name;
+            this.Mark = mark;
         }
     }
 }
