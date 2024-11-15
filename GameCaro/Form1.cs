@@ -1,112 +1,171 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Common;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.AspNetCore.SignalR.Client;
 
 namespace GameCaro
 {
     public partial class Form1 : Form
     {
+        #region Properties
         ChessBoardManager ChessBoard;
-        HubConnection hubConnection;
+
+        SocketManager socket;
+        #endregion
         public Form1()
         {
             InitializeComponent();
 
-            ChessBoard = new ChessBoardManager(pnlChessBoard, txtLabelName, ptcMark);
+            ChessBoard = new ChessBoardManager(pnlChessBoard, txbPlayerName, pctbMark);
             ChessBoard.EndedGame += ChessBoard_EndedGame;
             ChessBoard.PlayerMarked += ChessBoard_PlayerMarked;
 
-            pcbCoolDown.Step = Constain.COOL_DOWN_STEP;
-            pcbCoolDown.Maximum = Constain.COOL_DOWN_TIME;
-            pcbCoolDown.Value = 0;
-            
-            tmCoolDown.Interval = Constain.COOL_DOWN_INTERVAL;
+            prcbCoolDown.Step = Cons.COOL_DOWN_STEP;
+            prcbCoolDown.Maximum = Cons.COOL_DOWN_TIME;
+            prcbCoolDown.Value = 0;
 
-            ChessBoard.DrawChessBoard();
+            tmCoolDown.Interval = Cons.COOL_DOWN_INTERVAL;
 
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7157/ChatHub")
-                .Build();
-            hubConnection.Closed += HubConnection_Closed;
+            socket = new SocketManager();
+
+            NewGame();
         }
+
+        #region Methods
 
         void EndGame()
         {
             tmCoolDown.Stop();
             pnlChessBoard.Enabled = false;
-            MessageBox.Show("Ket thuc");
+            undoToolStripMenuItem.Enabled = false;
+            MessageBox.Show("Kết thúc");
         }
 
-        private void ChessBoard_PlayerMarked(object sender, EventArgs e)
+        void NewGame()
+        {
+            prcbCoolDown.Value = 0;
+            tmCoolDown.Stop();
+            undoToolStripMenuItem.Enabled = true;
+            ChessBoard.DrawChessBoard();
+        }
+
+        void Quit()
+        {
+            Application.Exit();
+        }
+
+        void Undo()
+        {
+            ChessBoard.Undo();
+        }
+
+        void ChessBoard_PlayerMarked(object sender, EventArgs e)
         {
             tmCoolDown.Start();
-            pcbCoolDown.Value = 0;
+            prcbCoolDown.Value = 0;
         }
 
-        private void ChessBoard_EndedGame(object sender, EventArgs e)
+        void ChessBoard_EndedGame(object sender, EventArgs e)
         {
             EndGame();
         }
 
         private void tmCoolDown_Tick(object sender, EventArgs e)
         {
-            pcbCoolDown.PerformStep();
+            prcbCoolDown.PerformStep();
 
-            if (pcbCoolDown.Value >= pcbCoolDown.Maximum)
+            if (prcbCoolDown.Value >= prcbCoolDown.Maximum)
             {
-                EndGame();
+                EndGame();                
             }
         }
-        private async void Form1_Load_1(object sender, EventArgs e)
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
-            {
-                var newMessage = $"{user}: {message} ";
-                lstMessage.Items.Add(newMessage);
-            });
-            try
-            {
-                await hubConnection.StartAsync();
-                lstMessage.Items.Add("Connection started");
-            }
-            catch (Exception ex)
-            {
-                lstMessage.Items.Add(ex.Message);
-            }
+            NewGame();
         }
-        private async Task HubConnection_Closed(Exception arg)
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (arg == null)
-            {
-                arg = new Exception("No specific error provided");
-            }
-
-            lstMessage.Items.Add($"Connection closed due to error: {arg.Message}");
-
-            await Task.Delay(new Random().Next(0, 5) * 1000);
-            await hubConnection.StartAsync();
+            Undo();
         }
-        private async void btnSend_Click(object sender, EventArgs e)
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            Quit();            
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+                e.Cancel = true;
+        }
+        
+        private void btnLAN_Click(object sender, EventArgs e)
+        {
+            socket.IP = txbIP.Text;
+
+            if (!socket.ConnectServer())
             {
-                await hubConnection.InvokeAsync("SendMessage", txtUser.Text, txtMessage.Text);
+                socket.CreateServer();
+
+                Thread listenThread = new Thread(() =>
+                {
+                    while (true)
+                    {
+                        Thread.Sleep(500);
+                        try
+                        {
+                            Listen();
+                            break;
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                });
+                listenThread.IsBackground = true;
+                listenThread.Start();
             }
-            catch (Exception ex)
+            else
             {
-                lstMessage.Items.Add(ex.Message);
+                Thread listenThread = new Thread(() =>
+                {
+                    Listen();
+                });
+                listenThread.IsBackground = true;
+                listenThread.Start();
+
+                socket.Send("Thông tin từ Client");
+            }
+
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            txbIP.Text = socket.GetLocalIPv4(NetworkInterfaceType.Wireless80211);
+
+            if (string.IsNullOrEmpty(txbIP.Text))
+            {
+                txbIP.Text = socket.GetLocalIPv4(NetworkInterfaceType.Ethernet);
             }
         }
 
+        void Listen()
+        {
+            string data = (string)socket.Receive();
+
+            MessageBox.Show(data);
+        }
+
+        #endregion
     }
 }
-    
-
